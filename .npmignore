@@ -2,3 +2,6 @@ node_modules
 src
 .gitignore
 yarn.lock
+build.sh
+tsconfig.json
+webpack.config.js

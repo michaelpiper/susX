@@ -63,19 +63,27 @@ function assertObj (obj: any) {
 
 export class SusX<T> {
   constructor (value: T) {
-    this.#value = value
+    let _value = value
+    Object.defineProperty(this, '$value', {
+      get(){
+       return _value
+      },
+      set(v) {
+        _value = v
+        this.emit(CHANGE_KEY_NAME, value)
+      },
+    })
   }
 
   get value (): T {
-    return this.#value
+    return this.$value
   }
 
   set value (value:T){
-    this.#value=value
-    this.emit(CHANGE_KEY_NAME, value)
+    this.$value=value
   }
 
-  #value: T
+  protected $value!: T
   _events: Record<SymbolKey, Array<{ fn: Fn<any> }>> = {}
   delay = (ms: number) => new Promise((resolve)=> setTimeout(resolve, ms))
   addListener (type: SymbolKey, fn: Fn<this>) {
