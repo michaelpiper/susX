@@ -1,6 +1,6 @@
 {
   "name": "susx",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The Last ObjectEventEmitter with a lot of features",
   "main": "lib/index.js",
   "scripts": {
@@ -17,6 +17,9 @@
     "reactive",
     "extension",
     "rxjs",
+    "eventemitter",
+    "emitter",
+    "event",
     "await event emitter",
     "await-event-emitter",
     "rx",
