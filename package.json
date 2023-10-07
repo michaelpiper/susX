@@ -1,0 +1,36 @@
+{
+  "name": "susx",
+  "version": "0.0.1",
+  "description": "The Last ObjectEventEmitter with a lot of features",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "ts-node src/index.test.ts",
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelpiper/susX.git"
+  },
+  "keywords": [
+    "event-emitter",
+    "reactive",
+    "extension",
+    "rxjs",
+    "await event emitter",
+    "await-event-emitter",
+    "rx",
+    "js"
+  ],
+  "author": "Michael Piper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelpiper/susX/issues"
+  },
+  "homepage": "https://github.com/michaelpiper/susX#readme",
+  "devDependencies": {
+    "@types/node": "^20.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
