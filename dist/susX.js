@@ -16,23 +16,23 @@
               (Object.create
                 ? function (t, e, n, r) {
                     void 0 === r && (r = n);
-                    var o = Object.getOwnPropertyDescriptor(e, n);
-                    (o &&
-                      !("get" in o
+                    var i = Object.getOwnPropertyDescriptor(e, n);
+                    (i &&
+                      !("get" in i
                         ? !e.__esModule
-                        : o.writable || o.configurable)) ||
-                      (o = {
+                        : i.writable || i.configurable)) ||
+                      (i = {
                         enumerable: !0,
                         get: function () {
                           return e[n];
                         },
                       }),
-                      Object.defineProperty(t, r, o);
+                      Object.defineProperty(t, r, i);
                   }
                 : function (t, e, n, r) {
                     void 0 === r && (r = n), (t[r] = e[n]);
                   }),
-            o =
+            i =
               (this && this.__exportStar) ||
               function (t, e) {
                 for (var n in t)
@@ -40,7 +40,7 @@
                     Object.prototype.hasOwnProperty.call(e, n) ||
                     r(e, t, n);
               };
-          Object.defineProperty(e, "__esModule", { value: !0 }), o(n(329), e);
+          Object.defineProperty(e, "__esModule", { value: !0 }), i(n(329), e);
         },
         329: function (t, e) {
           var n,
@@ -78,44 +78,44 @@
                       ? Object.create(e)
                       : ((r.prototype = e.prototype), new r()));
               }),
-            o =
+            i =
               (this && this.__assign) ||
               function () {
                 return (
-                  (o =
+                  (i =
                     Object.assign ||
                     function (t) {
                       for (var e, n = 1, r = arguments.length; n < r; n++)
-                        for (var o in (e = arguments[n]))
-                          Object.prototype.hasOwnProperty.call(e, o) &&
-                            (t[o] = e[o]);
+                        for (var i in (e = arguments[n]))
+                          Object.prototype.hasOwnProperty.call(e, i) &&
+                            (t[i] = e[i]);
                       return t;
                     }),
-                  o.apply(this, arguments)
+                  i.apply(this, arguments)
                 );
               },
-            i =
+            o =
               (this && this.__awaiter) ||
               function (t, e, n, r) {
-                return new (n || (n = Promise))(function (o, i) {
+                return new (n || (n = Promise))(function (i, o) {
                   function s(t) {
                     try {
                       c(r.next(t));
                     } catch (t) {
-                      i(t);
+                      o(t);
                     }
                   }
                   function u(t) {
                     try {
                       c(r.throw(t));
                     } catch (t) {
-                      i(t);
+                      o(t);
                     }
                   }
                   function c(t) {
                     var e;
                     t.done
-                      ? o(t.value)
+                      ? i(t.value)
                       : ((e = t.value),
                         e instanceof n
                           ? e
@@ -131,50 +131,50 @@
               function (t, e) {
                 var n,
                   r,
-                  o,
                   i,
+                  o,
                   s = {
                     label: 0,
                     sent: function () {
-                      if (1 & o[0]) throw o[1];
-                      return o[1];
+                      if (1 & i[0]) throw i[1];
+                      return i[1];
                     },
                     trys: [],
                     ops: [],
                   };
                 return (
-                  (i = { next: u(0), throw: u(1), return: u(2) }),
+                  (o = { next: u(0), throw: u(1), return: u(2) }),
                   "function" == typeof Symbol &&
-                    (i[Symbol.iterator] = function () {
+                    (o[Symbol.iterator] = function () {
                       return this;
                     }),
-                  i
+                  o
                 );
                 function u(u) {
                   return function (c) {
                     return (function (u) {
                       if (n)
                         throw new TypeError("Generator is already executing.");
-                      for (; i && ((i = 0), u[0] && (s = 0)), s; )
+                      for (; o && ((o = 0), u[0] && (s = 0)), s; )
                         try {
                           if (
                             ((n = 1),
                             r &&
-                              (o =
+                              (i =
                                 2 & u[0]
                                   ? r.return
                                   : u[0]
-                                  ? r.throw || ((o = r.return) && o.call(r), 0)
+                                  ? r.throw || ((i = r.return) && i.call(r), 0)
                                   : r.next) &&
-                              !(o = o.call(r, u[1])).done)
+                              !(i = i.call(r, u[1])).done)
                           )
-                            return o;
+                            return i;
                           switch (
-                            ((r = 0), o && (u = [2 & u[0], o.value]), u[0])
+                            ((r = 0), i && (u = [2 & u[0], i.value]), u[0])
                           ) {
                             case 0:
                             case 1:
-                              o = u;
+                              i = u;
                               break;
                             case 4:
                               return s.label++, { value: u[1], done: !1 };
@@ -187,9 +187,9 @@
                             default:
                               if (
                                 !(
-                                  (o =
-                                    (o = s.trys).length > 0 &&
-                                    o[o.length - 1]) ||
+                                  (i =
+                                    (i = s.trys).length > 0 &&
+                                    i[i.length - 1]) ||
                                   (6 !== u[0] && 2 !== u[0])
                                 )
                               ) {
@@ -198,27 +198,27 @@
                               }
                               if (
                                 3 === u[0] &&
-                                (!o || (u[1] > o[0] && u[1] < o[3]))
+                                (!i || (u[1] > i[0] && u[1] < i[3]))
                               ) {
                                 s.label = u[1];
                                 break;
                               }
-                              if (6 === u[0] && s.label < o[1]) {
-                                (s.label = o[1]), (o = u);
+                              if (6 === u[0] && s.label < i[1]) {
+                                (s.label = i[1]), (i = u);
                                 break;
                               }
-                              if (o && s.label < o[2]) {
-                                (s.label = o[2]), s.ops.push(u);
+                              if (i && s.label < i[2]) {
+                                (s.label = i[2]), s.ops.push(u);
                                 break;
                               }
-                              o[2] && s.ops.pop(), s.trys.pop();
+                              i[2] && s.ops.pop(), s.trys.pop();
                               continue;
                           }
                           u = e.call(t, s);
                         } catch (t) {
                           (u = [6, t]), (r = 0);
                         } finally {
-                          n = o = 0;
+                          n = i = 0;
                         }
                       if (5 & u[0]) throw u[1];
                       return { value: u[0] ? u[1] : void 0, done: !0 };
@@ -230,10 +230,10 @@
               (this && this.__spreadArray) ||
               function (t, e, n) {
                 if (n || 2 === arguments.length)
-                  for (var r, o = 0, i = e.length; o < i; o++)
-                    (!r && o in e) ||
-                      (r || (r = Array.prototype.slice.call(e, 0, o)),
-                      (r[o] = e[o]));
+                  for (var r, i = 0, o = e.length; i < o; i++)
+                    (!r && i in e) ||
+                      (r || (r = Array.prototype.slice.call(e, 0, i)),
+                      (r[i] = e[i]));
                 return t.concat(r || Array.prototype.slice.call(e));
               };
           Object.defineProperty(e, "__esModule", { value: !0 }),
@@ -250,15 +250,15 @@
                 "function" == typeof t.then
               );
             },
-            f =
+            a =
               "function" == typeof Symbol
                 ? Symbol.for("--[[SusX]]--")
                 : "--[[SusX]]--",
-            a =
+            f =
               "function" == typeof Symbol
                 ? Symbol.for("--[[SusX-value-change]]--")
                 : "--[[SusX-value-change]]--";
-          function p(t) {
+          function h(t) {
             if (
               "string" != typeof t &&
               "number" != typeof t &&
@@ -266,17 +266,17 @@
             )
               throw new TypeError("type is not type of string or symbol!");
           }
-          function l(t) {
+          function p(t) {
             if ("function" != typeof t)
               throw new TypeError("fn is not type of Function!");
           }
-          function h(t) {
+          function l(t) {
             var e;
-            return ((e = {})[f] = "always"), (e.fn = t), e;
+            return ((e = {})[a] = "always"), (e.fn = t), e;
           }
           function v(t) {
             var e;
-            return ((e = {})[f] = "once"), (e.fn = t), e;
+            return ((e = {})[a] = "once"), (e.fn = t), e;
           }
           function y(t, e) {
             e._events[t] = e._events[t] || [];
@@ -300,7 +300,7 @@
                   return e;
                 },
                 set: function (n) {
-                  (e = n), this.emit(a, t);
+                  (e = n), this.emit(f, t);
                 },
               });
             }
@@ -319,30 +319,30 @@
                 return this.on(t, e);
               }),
               (t.prototype.observe = function (t, e) {
-                return i(this, void 0, void 0, function () {
+                return o(this, void 0, void 0, function () {
                   var n = this;
                   return s(this, function (r) {
                     switch (r.label) {
                       case 0:
                         return (
-                          p(t),
-                          l(e),
+                          h(t),
+                          p(e),
                           y(t, this),
                           [
                             4,
-                            new Promise(function (r, o) {
+                            new Promise(function (r, i) {
                               n._events[t].push(
                                 v(function () {
                                   for (
-                                    var t = [], i = 0;
-                                    i < arguments.length;
-                                    i++
+                                    var t = [], o = 0;
+                                    o < arguments.length;
+                                    o++
                                   )
-                                    t[i] = arguments[i];
+                                    t[o] = arguments[o];
                                   try {
                                     r(e.apply(n, t));
                                   } catch (t) {
-                                    o(t);
+                                    i(t);
                                   }
                                 }),
                               );
@@ -357,31 +357,31 @@
               }),
               (t.prototype.subscribe = function (t) {
                 var e = this,
-                  n = new m(),
+                  n = new g(),
                   r = function () {
                     return setTimeout(function () {
-                      e.has(t, o) ? r() : n.emit("end");
+                      e.has(t, i) ? r() : n.emit("end");
                     }, 10);
                   },
-                  o = function () {
+                  i = function () {
                     for (var t = [], e = 0; e < arguments.length; e++)
                       t[e] = arguments[e];
                     n.emit.apply(n, u(["data"], t, !1));
                   };
-                return this.on(t, o), r(), n;
+                return this.on(t, i), r(), n;
               }),
               (t.prototype.valueChange = function (t) {
-                return new g(this, t);
+                return new O(this, t);
               }),
               (t.prototype.on = function (t, e) {
-                return p(t), l(e), y(t, this), this._events[t].push(h(e)), this;
+                return h(t), p(e), y(t, this), this._events[t].push(l(e)), this;
               }),
               (t.prototype.prepend = function (t, e) {
                 return this.prependListener(t, e);
               }),
               (t.prototype.prependListener = function (t, e) {
                 return (
-                  p(t), l(e), y(t, this), this._events[t].unshift(h(e)), this
+                  h(t), p(e), y(t, this), this._events[t].unshift(l(e)), this
                 );
               }),
               (t.prototype.prependOnce = function (t, e) {
@@ -389,7 +389,7 @@
               }),
               (t.prototype.prependOnceListener = function (t, e) {
                 return (
-                  p(t), l(e), y(t, this), this._events[t].unshift(v(e)), this
+                  h(t), p(e), y(t, this), this._events[t].unshift(v(e)), this
                 );
               }),
               (t.prototype.listeners = function (t) {
@@ -398,7 +398,7 @@
                 });
               }),
               (t.prototype.once = function (t, e) {
-                return p(t), l(e), y(t, this), this._events[t].push(v(e)), this;
+                return h(t), p(e), y(t, this), this._events[t].push(v(e)), this;
               }),
               (t.prototype.removeAllListeners = function () {
                 this._events = {};
@@ -407,51 +407,55 @@
                 return this.removeListener(t, e);
               }),
               (t.prototype.has = function (t, e) {
-                return p(t), l(e), y(t, this), !!this.listeners(t).includes(e);
+                h(t), y(t, this);
+                var n = this.listeners(t);
+                return null == e || void 0 === e
+                  ? 0 !== n.length
+                  : (p(e), !!n.includes(e));
               }),
               (t.prototype.removeListener = function (t, e) {
-                p(t);
+                h(t);
                 var n = this.listeners(t);
                 if ("function" == typeof e) {
-                  for (var r = -1, o = !1; (r = n.indexOf(e)) >= 0; )
-                    n.splice(r, 1), this._events[t].splice(r, 1), (o = !0);
-                  return o;
+                  for (var r = -1, i = !1; (r = n.indexOf(e)) >= 0; )
+                    n.splice(r, 1), this._events[t].splice(r, 1), (i = !0);
+                  return i;
                 }
                 return delete this._events[t];
               }),
               (t.prototype.broadcast = function (t) {
                 for (var e = [], n = 1; n < arguments.length; n++)
                   e[n - 1] = arguments[n];
-                return i(this, void 0, void 0, function () {
+                return o(this, void 0, void 0, function () {
                   var n,
                     r = this;
-                  return s(this, function (o) {
-                    switch (o.label) {
+                  return s(this, function (i) {
+                    switch (i.label) {
                       case 0:
                         return (
-                          p(t),
+                          h(t),
                           (n = this.listeners(t)) && n.length > 0
                             ? [
                                 4,
                                 Promise.all(
-                                  n.map(function (n, o) {
-                                    return i(r, void 0, void 0, function () {
+                                  n.map(function (n, i) {
+                                    return o(r, void 0, void 0, function () {
                                       var r;
-                                      return s(this, function (i) {
-                                        switch (i.label) {
+                                      return s(this, function (o) {
+                                        switch (o.label) {
                                           case 0:
                                             return (
                                               (r = n.apply(this, e)),
                                               c(r) ? [4, r] : [3, 2]
                                             );
                                           case 1:
-                                            i.sent(), (i.label = 2);
+                                            o.sent(), (o.label = 2);
                                           case 2:
                                             return (
                                               this._events[t] &&
-                                                this._events[t][o] &&
+                                                this._events[t][i] &&
                                                 "once" ===
-                                                  this._events[t][o][f] &&
+                                                  this._events[t][i][a] &&
                                                 this.removeListener(t, n),
                                               [2]
                                             );
@@ -464,7 +468,7 @@
                             : [3, 2]
                         );
                       case 1:
-                        return o.sent(), [2, !0];
+                        return i.sent(), [2, !0];
                       case 2:
                         return [2, !1];
                     }
@@ -474,44 +478,44 @@
               (t.prototype.tap = function (t) {
                 for (var e = [], n = 1; n < arguments.length; n++)
                   e[n - 1] = arguments[n];
-                return i(this, void 0, void 0, function () {
+                return o(this, void 0, void 0, function () {
                   var n,
                     r,
-                    o,
                     i,
+                    o,
                     u,
-                    a = this;
+                    f = this;
                   return s(this, function (s) {
                     switch (s.label) {
                       case 0:
                         if (
-                          (p(t),
+                          (h(t),
                           (n = this.listeners(t)),
                           (r = []),
                           !(n && n.length > 0))
                         )
                           return [3, 6];
-                        (o = 0), (s.label = 1);
+                        (i = 0), (s.label = 1);
                       case 1:
-                        return o < n.length
-                          ? ((i = n[o]),
-                            (u = i.apply(this, e)),
+                        return i < n.length
+                          ? ((o = n[i]),
+                            (u = o.apply(this, e)),
                             c(u) ? [4, u] : [3, 3])
                           : [3, 5];
                       case 2:
                         s.sent(), (s.label = 3);
                       case 3:
                         this._events[t] &&
-                          this._events[t][o] &&
-                          "once" === this._events[t][o][f] &&
-                          r.push(i),
+                          this._events[t][i] &&
+                          "once" === this._events[t][i][a] &&
+                          r.push(o),
                           (s.label = 4);
                       case 4:
-                        return o++, [3, 1];
+                        return i++, [3, 1];
                       case 5:
                         return (
                           r.forEach(function (e) {
-                            return a.removeListener(t, e);
+                            return f.removeListener(t, e);
                           }),
                           [2, !0]
                         );
@@ -524,19 +528,19 @@
               (t.prototype.emit = function (t) {
                 for (var e = this, n = [], r = 1; r < arguments.length; r++)
                   n[r - 1] = arguments[r];
-                p(t);
-                var o = this.listeners(t),
-                  i = [];
+                h(t);
+                var i = this.listeners(t),
+                  o = [];
                 return (
-                  !!(o && o.length > 0) &&
-                  (o.forEach(function (r, o) {
+                  !!(i && i.length > 0) &&
+                  (i.forEach(function (r, i) {
                     r.apply(e, n),
                       e._events[t] &&
-                        e._events[t][o] &&
-                        "once" === e._events[t][o][f] &&
-                        i.push(r);
+                        e._events[t][i] &&
+                        "once" === e._events[t][i][a] &&
+                        o.push(r);
                   }),
-                  i.forEach(function (n) {
+                  o.forEach(function (n) {
                     return e.removeListener(t, n);
                   }),
                   !0)
@@ -553,9 +557,14 @@
             return r(e, t), e;
           })(_);
           e.SusXSubscription = d;
-          var g = (function () {
-            function t(t, e) {
-              (this._susX = t), (this._listener = e);
+          var O = (function () {
+            function t(e, n) {
+              (this._susX = e),
+                (this._listener = n),
+                (this.ON = t.ON),
+                (this.OFF = t.OFF),
+                (this.ONCE = t.ONCE),
+                (this.state = t.ONCE);
             }
             return (
               Object.defineProperty(t.prototype, "value", {
@@ -566,26 +575,44 @@
                 configurable: !0,
               }),
               (t.prototype.on = function () {
-                return this._susX.on(a, this._listener), this;
+                return (
+                  this.state == this.ON ||
+                    (this.state > 0 && this.off(),
+                    (this.state = this.ON),
+                    this._susX.on(f, this._listener)),
+                  this
+                );
               }),
               (t.prototype.once = function () {
-                return this._susX.once(a, this._listener), this;
+                return (
+                  this.state == this.ONCE ||
+                    (this.state > 0 && this.off(),
+                    (this.state = this.ONCE),
+                    this._susX.once(f, this._listener)),
+                  this
+                );
               }),
               (t.prototype.off = function () {
-                return this._susX.off(a, this._listener);
+                return (
+                  this.state != this.OFF &&
+                  ((this.state = this.OFF), this._susX.off(f, this._listener))
+                );
               }),
+              (t.ON = 1),
+              (t.OFF = 0),
+              (t.ONCE = 0.5),
               t
             );
           })();
-          e.SusXChangeObserver = g;
-          var m = (function (t) {
+          e.SusXChangeObserver = O;
+          var g = (function (t) {
             function e() {
               return t.call(this, null) || this;
             }
             return r(e, t), e;
           })(_);
-          e.SusXObserver = m;
-          var w = (function (t) {
+          e.SusXObserver = g;
+          var m = (function (t) {
             function e(e) {
               var n = this;
               return (
@@ -600,9 +627,9 @@
               (e.prototype.putObject = function (t) {
                 if ("function" == typeof t) {
                   var e = this.value;
-                  return (this.value = o(o({}, e), t(e))), this;
+                  return (this.value = i(i({}, e), t(e))), this;
                 }
-                return b(t), (this.value = o(o({}, this.value), t)), this;
+                return b(t), (this.value = i(i({}, this.value), t)), this;
               }),
               (e.prototype.getObject = function () {
                 var t;
@@ -618,15 +645,15 @@
               e
             );
           })(_);
-          e.SusXObject = w;
+          e.SusXObject = m;
         },
       },
       e = {};
     return (function n(r) {
-      var o = e[r];
-      if (void 0 !== o) return o.exports;
-      var i = (e[r] = { exports: {} });
-      return t[r].call(i.exports, i, i.exports, n), i.exports;
+      var i = e[r];
+      if (void 0 !== i) return i.exports;
+      var o = (e[r] = { exports: {} });
+      return t[r].call(o.exports, o, o.exports, n), o.exports;
     })(607);
   })();
 });

@@ -182,12 +182,15 @@ export class SusX<T> {
     return this.removeListener(type, nullOrFn)
   }
 
-  has (type: SymbolKey, fn: Fn<this>): boolean {
+  has (type: SymbolKey, fn?: Fn<this>): boolean {
     assertType(type)
-    assertFn(fn)
     assertEvents(type, this)
     const listeners = this.listeners(type)
-    if (listeners.includes(fn)) {
+    if(fn == null || fn === undefined){
+      return listeners.length!==0
+    }
+    assertFn(fn!)
+    if (listeners.includes(fn!)) {
       return true
     }
     return false
@@ -280,19 +283,39 @@ export class SusXSubscription extends SusX<null> {
 export class SusXChangeObserver< ISusX extends SusX<any>, R = any> {
   constructor (protected _susX:ISusX, protected _listener:Fn<ISusX, ISusX['value'], R>) {
   }
+  static ON: 1 = 1
+  static OFF: 0 = 0
+  static ONCE: 0.5 = 0.5
+   ON = SusXChangeObserver.ON
+   OFF =  SusXChangeObserver.OFF
+   ONCE =   SusXChangeObserver.ONCE
+  state: 1| 0| 0.5 = SusXChangeObserver.ONCE
   get value(): ISusX['value'] {
     return this._susX.value
   }
   on():this{
+    if(this.state == this.ON) return this;
+    if(this.state>0){
+      this.off()
+    }
+    this.state =  this.ON
     this._susX.on(CHANGE_KEY_NAME, this._listener)
     return this
   }
   once():this{
+    if(this.state == this.ONCE) return this;
+    if(this.state>0){
+      this.off()
+    }
+    this.state =  this.ONCE
     this._susX.once(CHANGE_KEY_NAME, this._listener)
     return this
   }
-  off(){
-   return this._susX.off(CHANGE_KEY_NAME, this._listener)
+
+  off(): boolean{
+    if(this.state == this.OFF)return false;
+    this.state =  this.OFF
+    return this._susX.off(CHANGE_KEY_NAME, this._listener)
   }
 }
 export class SusXObserver extends SusX<null> {
