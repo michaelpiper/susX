@@ -3,20 +3,20 @@
     module.exports = e();
   else if ("function" == typeof define && define.amd) define([], e);
   else {
-    var n = e();
-    for (var r in n) ("object" == typeof exports ? exports : t)[r] = n[r];
+    var s = e();
+    for (var n in s) ("object" == typeof exports ? exports : t)[n] = s[n];
   }
 })(self, function () {
   return (function () {
     "use strict";
     var t = {
-        607: function (t, e, n) {
-          var r =
+        607: function (t, e, s) {
+          var n =
               (this && this.__createBinding) ||
               (Object.create
-                ? function (t, e, n, r) {
-                    void 0 === r && (r = n);
-                    var i = Object.getOwnPropertyDescriptor(e, n);
+                ? function (t, e, s, n) {
+                    void 0 === n && (n = s);
+                    var i = Object.getOwnPropertyDescriptor(e, s);
                     (i &&
                       !("get" in i
                         ? !e.__esModule
@@ -24,218 +24,57 @@
                       (i = {
                         enumerable: !0,
                         get: function () {
-                          return e[n];
+                          return e[s];
                         },
                       }),
-                      Object.defineProperty(t, r, i);
+                      Object.defineProperty(t, n, i);
                   }
-                : function (t, e, n, r) {
-                    void 0 === r && (r = n), (t[r] = e[n]);
+                : function (t, e, s, n) {
+                    void 0 === n && (n = s), (t[n] = e[s]);
                   }),
             i =
               (this && this.__exportStar) ||
               function (t, e) {
-                for (var n in t)
-                  "default" === n ||
-                    Object.prototype.hasOwnProperty.call(e, n) ||
-                    r(e, t, n);
+                for (var s in t)
+                  "default" === s ||
+                    Object.prototype.hasOwnProperty.call(e, s) ||
+                    n(e, t, s);
               };
-          Object.defineProperty(e, "__esModule", { value: !0 }), i(n(329), e);
+          Object.defineProperty(e, "__esModule", { value: !0 }), i(s(329), e);
         },
         329: function (t, e) {
-          var n,
-            r =
-              (this && this.__extends) ||
-              ((n = function (t, e) {
-                return (
-                  (n =
-                    Object.setPrototypeOf ||
-                    ({ __proto__: [] } instanceof Array &&
-                      function (t, e) {
-                        t.__proto__ = e;
-                      }) ||
-                    function (t, e) {
-                      for (var n in e)
-                        Object.prototype.hasOwnProperty.call(e, n) &&
-                          (t[n] = e[n]);
-                    }),
-                  n(t, e)
-                );
-              }),
-              function (t, e) {
-                if ("function" != typeof e && null !== e)
-                  throw new TypeError(
-                    "Class extends value " +
-                      String(e) +
-                      " is not a constructor or null",
-                  );
-                function r() {
-                  this.constructor = t;
+          var s =
+            (this && this.__awaiter) ||
+            function (t, e, s, n) {
+              return new (s || (s = Promise))(function (i, r) {
+                function o(t) {
+                  try {
+                    h(n.next(t));
+                  } catch (t) {
+                    r(t);
+                  }
                 }
-                n(t, e),
-                  (t.prototype =
-                    null === e
-                      ? Object.create(e)
-                      : ((r.prototype = e.prototype), new r()));
-              }),
-            i =
-              (this && this.__assign) ||
-              function () {
-                return (
-                  (i =
-                    Object.assign ||
-                    function (t) {
-                      for (var e, n = 1, r = arguments.length; n < r; n++)
-                        for (var i in (e = arguments[n]))
-                          Object.prototype.hasOwnProperty.call(e, i) &&
-                            (t[i] = e[i]);
-                      return t;
-                    }),
-                  i.apply(this, arguments)
-                );
-              },
-            o =
-              (this && this.__awaiter) ||
-              function (t, e, n, r) {
-                return new (n || (n = Promise))(function (i, o) {
-                  function s(t) {
-                    try {
-                      c(r.next(t));
-                    } catch (t) {
-                      o(t);
-                    }
+                function u(t) {
+                  try {
+                    h(n.throw(t));
+                  } catch (t) {
+                    r(t);
                   }
-                  function u(t) {
-                    try {
-                      c(r.throw(t));
-                    } catch (t) {
-                      o(t);
-                    }
-                  }
-                  function c(t) {
-                    var e;
-                    t.done
-                      ? i(t.value)
-                      : ((e = t.value),
-                        e instanceof n
-                          ? e
-                          : new n(function (t) {
-                              t(e);
-                            })).then(s, u);
-                  }
-                  c((r = r.apply(t, e || [])).next());
-                });
-              },
-            s =
-              (this && this.__generator) ||
-              function (t, e) {
-                var n,
-                  r,
-                  i,
-                  o,
-                  s = {
-                    label: 0,
-                    sent: function () {
-                      if (1 & i[0]) throw i[1];
-                      return i[1];
-                    },
-                    trys: [],
-                    ops: [],
-                  };
-                return (
-                  (o = { next: u(0), throw: u(1), return: u(2) }),
-                  "function" == typeof Symbol &&
-                    (o[Symbol.iterator] = function () {
-                      return this;
-                    }),
-                  o
-                );
-                function u(u) {
-                  return function (c) {
-                    return (function (u) {
-                      if (n)
-                        throw new TypeError("Generator is already executing.");
-                      for (; o && ((o = 0), u[0] && (s = 0)), s; )
-                        try {
-                          if (
-                            ((n = 1),
-                            r &&
-                              (i =
-                                2 & u[0]
-                                  ? r.return
-                                  : u[0]
-                                  ? r.throw || ((i = r.return) && i.call(r), 0)
-                                  : r.next) &&
-                              !(i = i.call(r, u[1])).done)
-                          )
-                            return i;
-                          switch (
-                            ((r = 0), i && (u = [2 & u[0], i.value]), u[0])
-                          ) {
-                            case 0:
-                            case 1:
-                              i = u;
-                              break;
-                            case 4:
-                              return s.label++, { value: u[1], done: !1 };
-                            case 5:
-                              s.label++, (r = u[1]), (u = [0]);
-                              continue;
-                            case 7:
-                              (u = s.ops.pop()), s.trys.pop();
-                              continue;
-                            default:
-                              if (
-                                !(
-                                  (i =
-                                    (i = s.trys).length > 0 &&
-                                    i[i.length - 1]) ||
-                                  (6 !== u[0] && 2 !== u[0])
-                                )
-                              ) {
-                                s = 0;
-                                continue;
-                              }
-                              if (
-                                3 === u[0] &&
-                                (!i || (u[1] > i[0] && u[1] < i[3]))
-                              ) {
-                                s.label = u[1];
-                                break;
-                              }
-                              if (6 === u[0] && s.label < i[1]) {
-                                (s.label = i[1]), (i = u);
-                                break;
-                              }
-                              if (i && s.label < i[2]) {
-                                (s.label = i[2]), s.ops.push(u);
-                                break;
-                              }
-                              i[2] && s.ops.pop(), s.trys.pop();
-                              continue;
-                          }
-                          u = e.call(t, s);
-                        } catch (t) {
-                          (u = [6, t]), (r = 0);
-                        } finally {
-                          n = i = 0;
-                        }
-                      if (5 & u[0]) throw u[1];
-                      return { value: u[0] ? u[1] : void 0, done: !0 };
-                    })([u, c]);
-                  };
                 }
-              },
-            u =
-              (this && this.__spreadArray) ||
-              function (t, e, n) {
-                if (n || 2 === arguments.length)
-                  for (var r, i = 0, o = e.length; i < o; i++)
-                    (!r && i in e) ||
-                      (r || (r = Array.prototype.slice.call(e, 0, i)),
-                      (r[i] = e[i]));
-                return t.concat(r || Array.prototype.slice.call(e));
-              };
+                function h(t) {
+                  var e;
+                  t.done
+                    ? i(t.value)
+                    : ((e = t.value),
+                      e instanceof s
+                        ? e
+                        : new s(function (t) {
+                            t(e);
+                          })).then(o, u);
+                }
+                h((n = n.apply(t, e || [])).next());
+              });
+            };
           Object.defineProperty(e, "__esModule", { value: !0 }),
             (e.SusXObject =
               e.SusXObserver =
@@ -243,22 +82,19 @@
               e.SusXSubscription =
               e.SusX =
                 void 0);
-          var c = function (t) {
-              return (
-                !!t &&
-                ("object" == typeof t || "function" == typeof t) &&
-                "function" == typeof t.then
-              );
-            },
-            a =
+          const n = (t) =>
+              !!t &&
+              ("object" == typeof t || "function" == typeof t) &&
+              "function" == typeof t.then,
+            i =
               "function" == typeof Symbol
                 ? Symbol.for("--[[SusX]]--")
                 : "--[[SusX]]--",
-            f =
+            r =
               "function" == typeof Symbol
                 ? Symbol.for("--[[SusX-value-change]]--")
                 : "--[[SusX-value-change]]--";
-          function h(t) {
+          function o(t) {
             if (
               "string" != typeof t &&
               "number" != typeof t &&
@@ -266,394 +102,282 @@
             )
               throw new TypeError("type is not type of string or symbol!");
           }
-          function p(t) {
+          function u(t) {
             if ("function" != typeof t)
               throw new TypeError("fn is not type of Function!");
           }
-          function l(t) {
-            var e;
-            return ((e = {})[a] = "always"), (e.fn = t), e;
+          function h(t) {
+            return { [i]: "always", fn: t };
           }
-          function v(t) {
-            var e;
-            return ((e = {})[a] = "once"), (e.fn = t), e;
+          function c(t) {
+            return { [i]: "once", fn: t };
           }
-          function y(t, e) {
+          function f(t, e) {
             e._events[t] = e._events[t] || [];
           }
-          function b(t) {
+          function a(t) {
             if (null == (e = t) || "object" != typeof e || Array.isArray(e))
               throw TypeError("obj must be a type of Object!");
             var e;
           }
-          var _ = (function () {
-            function t(t) {
+          class l {
+            constructor(t) {
               (this._events = {}),
-                (this.delay = function (t) {
-                  return new Promise(function (e) {
-                    return setTimeout(e, t);
-                  });
-                });
-              var e = t;
+                (this.delay = (t) => new Promise((e) => setTimeout(e, t)));
+              let e = t;
               Object.defineProperty(this, "$value", {
-                get: function () {
+                get() {
                   return e;
                 },
-                set: function (n) {
-                  (e = n), this.emit(f, t);
+                set(s) {
+                  (e = s), this.emit(r, t);
                 },
               });
             }
-            return (
-              Object.defineProperty(t.prototype, "value", {
-                get: function () {
-                  return this.$value;
-                },
-                set: function (t) {
-                  this.$value = t;
-                },
-                enumerable: !1,
-                configurable: !0,
-              }),
-              (t.prototype.addListener = function (t, e) {
-                return this.on(t, e);
-              }),
-              (t.prototype.observe = function (t, e) {
-                return o(this, void 0, void 0, function () {
-                  var n = this;
-                  return s(this, function (r) {
-                    switch (r.label) {
-                      case 0:
-                        return (
-                          h(t),
-                          p(e),
-                          y(t, this),
-                          [
-                            4,
-                            new Promise(function (r, i) {
-                              n._events[t].push(
-                                v(function () {
-                                  for (
-                                    var t = [], o = 0;
-                                    o < arguments.length;
-                                    o++
-                                  )
-                                    t[o] = arguments[o];
-                                  try {
-                                    r(e.apply(n, t));
-                                  } catch (t) {
-                                    i(t);
-                                  }
-                                }),
-                              );
-                            }),
-                          ]
-                        );
-                      case 1:
-                        return [2, r.sent()];
-                    }
-                  });
-                });
-              }),
-              (t.prototype.subscribe = function (t) {
-                var e = this,
-                  n = new g(),
-                  r = function () {
-                    return setTimeout(function () {
-                      e.has(t, i) ? r() : n.emit("end");
-                    }, 10);
-                  },
-                  i = function () {
-                    for (var t = [], e = 0; e < arguments.length; e++)
-                      t[e] = arguments[e];
-                    n.emit.apply(n, u(["data"], t, !1));
-                  };
-                return this.on(t, i), r(), n;
-              }),
-              (t.prototype.valueChange = function (t) {
-                return new O(this, t);
-              }),
-              (t.prototype.on = function (t, e) {
-                return h(t), p(e), y(t, this), this._events[t].push(l(e)), this;
-              }),
-              (t.prototype.prepend = function (t, e) {
-                return this.prependListener(t, e);
-              }),
-              (t.prototype.prependListener = function (t, e) {
-                return (
-                  h(t), p(e), y(t, this), this._events[t].unshift(l(e)), this
-                );
-              }),
-              (t.prototype.prependOnce = function (t, e) {
-                return this.prependOnceListener(t, e);
-              }),
-              (t.prototype.prependOnceListener = function (t, e) {
-                return (
-                  h(t), p(e), y(t, this), this._events[t].unshift(v(e)), this
-                );
-              }),
-              (t.prototype.listeners = function (t) {
-                return (this._events[t] || []).map(function (t) {
-                  return t.fn;
-                });
-              }),
-              (t.prototype.once = function (t, e) {
-                return h(t), p(e), y(t, this), this._events[t].push(v(e)), this;
-              }),
-              (t.prototype.removeAllListeners = function () {
-                this._events = {};
-              }),
-              (t.prototype.off = function (t, e) {
-                return this.removeListener(t, e);
-              }),
-              (t.prototype.has = function (t, e) {
-                h(t), y(t, this);
-                var n = this.listeners(t);
-                return null == e || void 0 === e
-                  ? 0 !== n.length
-                  : (p(e), !!n.includes(e));
-              }),
-              (t.prototype.removeListener = function (t, e) {
-                h(t);
-                var n = this.listeners(t);
-                if ("function" == typeof e) {
-                  for (var r = -1, i = !1; (r = n.indexOf(e)) >= 0; )
-                    n.splice(r, 1), this._events[t].splice(r, 1), (i = !0);
-                  return i;
-                }
-                return delete this._events[t];
-              }),
-              (t.prototype.broadcast = function (t) {
-                for (var e = [], n = 1; n < arguments.length; n++)
-                  e[n - 1] = arguments[n];
-                return o(this, void 0, void 0, function () {
-                  var n,
-                    r = this;
-                  return s(this, function (i) {
-                    switch (i.label) {
-                      case 0:
-                        return (
-                          h(t),
-                          (n = this.listeners(t)) && n.length > 0
-                            ? [
-                                4,
-                                Promise.all(
-                                  n.map(function (n, i) {
-                                    return o(r, void 0, void 0, function () {
-                                      var r;
-                                      return s(this, function (o) {
-                                        switch (o.label) {
-                                          case 0:
-                                            return (
-                                              (r = n.apply(this, e)),
-                                              c(r) ? [4, r] : [3, 2]
-                                            );
-                                          case 1:
-                                            o.sent(), (o.label = 2);
-                                          case 2:
-                                            return (
-                                              this._events[t] &&
-                                                this._events[t][i] &&
-                                                "once" ===
-                                                  this._events[t][i][a] &&
-                                                this.removeListener(t, n),
-                                              [2]
-                                            );
-                                        }
-                                      });
-                                    });
-                                  }),
-                                ),
-                              ]
-                            : [3, 2]
-                        );
-                      case 1:
-                        return i.sent(), [2, !0];
-                      case 2:
-                        return [2, !1];
-                    }
-                  });
-                });
-              }),
-              (t.prototype.tap = function (t) {
-                for (var e = [], n = 1; n < arguments.length; n++)
-                  e[n - 1] = arguments[n];
-                return o(this, void 0, void 0, function () {
-                  var n,
-                    r,
-                    i,
-                    o,
-                    u,
-                    f = this;
-                  return s(this, function (s) {
-                    switch (s.label) {
-                      case 0:
-                        if (
-                          (h(t),
-                          (n = this.listeners(t)),
-                          (r = []),
-                          !(n && n.length > 0))
-                        )
-                          return [3, 6];
-                        (i = 0), (s.label = 1);
-                      case 1:
-                        return i < n.length
-                          ? ((o = n[i]),
-                            (u = o.apply(this, e)),
-                            c(u) ? [4, u] : [3, 3])
-                          : [3, 5];
-                      case 2:
-                        s.sent(), (s.label = 3);
-                      case 3:
-                        this._events[t] &&
-                          this._events[t][i] &&
-                          "once" === this._events[t][i][a] &&
-                          r.push(o),
-                          (s.label = 4);
-                      case 4:
-                        return i++, [3, 1];
-                      case 5:
-                        return (
-                          r.forEach(function (e) {
-                            return f.removeListener(t, e);
-                          }),
-                          [2, !0]
-                        );
-                      case 6:
-                        return [2, !1];
-                    }
-                  });
-                });
-              }),
-              (t.prototype.emit = function (t) {
-                for (var e = this, n = [], r = 1; r < arguments.length; r++)
-                  n[r - 1] = arguments[r];
-                h(t);
-                var i = this.listeners(t),
-                  o = [];
-                return (
-                  !!(i && i.length > 0) &&
-                  (i.forEach(function (r, i) {
-                    r.apply(e, n),
-                      e._events[t] &&
-                        e._events[t][i] &&
-                        "once" === e._events[t][i][a] &&
-                        o.push(r);
-                  }),
-                  o.forEach(function (n) {
-                    return e.removeListener(t, n);
-                  }),
-                  !0)
-                );
-              }),
-              t
-            );
-          })();
-          e.SusX = _;
-          var d = (function (t) {
-            function e() {
-              return t.call(this, null) || this;
+            get value() {
+              return this.$value;
             }
-            return r(e, t), e;
-          })(_);
-          e.SusXSubscription = d;
-          var O = (function () {
-            function t(e, n) {
-              (this._susX = e),
-                (this._listener = n),
-                (this.ON = t.ON),
-                (this.OFF = t.OFF),
-                (this.ONCE = t.ONCE),
-                (this.state = t.ONCE);
+            set value(t) {
+              this.$value = t;
             }
-            return (
-              Object.defineProperty(t.prototype, "value", {
-                get: function () {
-                  return this._susX.value;
-                },
-                enumerable: !1,
-                configurable: !0,
-              }),
-              (t.prototype.on = function () {
-                return (
-                  this.state == this.ON ||
-                    (this.state > 0 && this.off(),
-                    (this.state = this.ON),
-                    this._susX.on(f, this._listener)),
-                  this
-                );
-              }),
-              (t.prototype.once = function () {
-                return (
-                  this.state == this.ONCE ||
-                    (this.state > 0 && this.off(),
-                    (this.state = this.ONCE),
-                    this._susX.once(f, this._listener)),
-                  this
-                );
-              }),
-              (t.prototype.off = function () {
-                return (
-                  this.state != this.OFF &&
-                  ((this.state = this.OFF), this._susX.off(f, this._listener))
-                );
-              }),
-              (t.ON = 1),
-              (t.OFF = 0),
-              (t.ONCE = 0.5),
-              t
-            );
-          })();
-          e.SusXChangeObserver = O;
-          var g = (function (t) {
-            function e() {
-              return t.call(this, null) || this;
+            addListener(t, e) {
+              return this.on(t, e);
             }
-            return r(e, t), e;
-          })(_);
-          e.SusXObserver = g;
-          var m = (function (t) {
-            function e(e) {
-              var n = this;
+            observe(t, e) {
+              return s(this, void 0, void 0, function* () {
+                return (
+                  o(t),
+                  u(e),
+                  f(t, this),
+                  yield new Promise((s, n) => {
+                    this._events[t].push(
+                      c((...t) => {
+                        try {
+                          s(e.apply(this, t));
+                        } catch (t) {
+                          n(t);
+                        }
+                      }),
+                    );
+                  })
+                );
+              });
+            }
+            subscribe(t) {
+              const e = new v(),
+                s = () =>
+                  setTimeout(() => {
+                    this.has(t, n) ? s() : e.emit("end");
+                  }, 10),
+                n = (...t) => {
+                  e.emit("data", ...t);
+                };
+              return this.on(t, n), s(), e;
+            }
+            valueChange(t) {
+              return new p(this, t);
+            }
+            on(t, e) {
+              return o(t), u(e), f(t, this), this._events[t].push(h(e)), this;
+            }
+            prepend(t, e) {
+              return this.prependListener(t, e);
+            }
+            prependListener(t, e) {
               return (
-                void 0 !== e
-                  ? (b(e), (n = t.call(this, e) || this))
-                  : (n = t.call(this, {}) || this),
-                n
+                o(t), u(e), f(t, this), this._events[t].unshift(h(e)), this
               );
             }
-            return (
-              r(e, t),
-              (e.prototype.putObject = function (t) {
-                if ("function" == typeof t) {
-                  var e = this.value;
-                  return (this.value = i(i({}, e), t(e))), this;
+            prependOnce(t, e) {
+              return this.prependOnceListener(t, e);
+            }
+            prependOnceListener(t, e) {
+              return (
+                o(t), u(e), f(t, this), this._events[t].unshift(c(e)), this
+              );
+            }
+            listeners(t) {
+              return (this._events[t] || []).map((t) => t.fn);
+            }
+            once(t, e) {
+              return o(t), u(e), f(t, this), this._events[t].push(c(e)), this;
+            }
+            removeAllListeners() {
+              this._events = {};
+            }
+            off(t, e) {
+              return this.removeListener(t, e);
+            }
+            has(t, e) {
+              o(t), f(t, this);
+              const s = this.listeners(t);
+              return null == e || void 0 === e
+                ? 0 !== s.length
+                : (u(e), !!s.includes(e));
+            }
+            removeListener(t, e) {
+              o(t);
+              const s = this.listeners(t);
+              if ("function" == typeof e) {
+                let n = -1,
+                  i = !1;
+                for (; (n = s.indexOf(e)) >= 0; )
+                  s.splice(n, 1), this._events[t].splice(n, 1), (i = !0);
+                return i;
+              }
+              return delete this._events[t];
+            }
+            broadcast(t, ...e) {
+              return s(this, void 0, void 0, function* () {
+                o(t);
+                const r = this.listeners(t);
+                return (
+                  !!(r && r.length > 0) &&
+                  (yield Promise.all(
+                    r.map((r, o) =>
+                      s(this, void 0, void 0, function* () {
+                        const s = r.apply(this, e);
+                        n(s) && (yield s),
+                          this._events[t] &&
+                            this._events[t][o] &&
+                            "once" === this._events[t][o][i] &&
+                            this.removeListener(t, r);
+                      }),
+                    ),
+                  ),
+                  !0)
+                );
+              });
+            }
+            tap(t, ...e) {
+              return s(this, void 0, void 0, function* () {
+                o(t);
+                const s = this.listeners(t),
+                  r = [];
+                if (s && s.length > 0) {
+                  for (let o = 0; o < s.length; o++) {
+                    const u = s[o],
+                      h = u.apply(this, e);
+                    n(h) && (yield h),
+                      this._events[t] &&
+                        this._events[t][o] &&
+                        "once" === this._events[t][o][i] &&
+                        r.push(u);
+                  }
+                  return r.forEach((e) => this.removeListener(t, e)), !0;
                 }
-                return b(t), (this.value = i(i({}, this.value), t)), this;
-              }),
-              (e.prototype.getObject = function () {
+                return !1;
+              });
+            }
+            emit(t, ...e) {
+              o(t);
+              const s = this.listeners(t),
+                n = [];
+              return (
+                !!(s && s.length > 0) &&
+                (s.forEach((s, r) => {
+                  s.apply(this, e),
+                    this._events[t] &&
+                      this._events[t][r] &&
+                      "once" === this._events[t][r][i] &&
+                      n.push(s);
+                }),
+                n.forEach((e) => this.removeListener(t, e)),
+                !0)
+              );
+            }
+          }
+          (e.SusX = l),
+            (e.SusXSubscription = class extends l {
+              constructor() {
+                super(null);
+              }
+            });
+          class p {
+            constructor(t, e) {
+              (this._susX = t),
+                (this._listener = e),
+                (this.ON = p.ON),
+                (this.OFF = p.OFF),
+                (this.ONCE = p.ONCE),
+                (this.state = p.ONCE);
+            }
+            get value() {
+              return this._susX.value;
+            }
+            on() {
+              return (
+                this.state == this.ON ||
+                  (this.state > 0 && this.off(),
+                  (this.state = this.ON),
+                  this._susX.on(r, this._listener)),
+                this
+              );
+            }
+            once() {
+              return (
+                this.state == this.ONCE ||
+                  (this.state > 0 && this.off(),
+                  (this.state = this.ONCE),
+                  this._susX.once(r, this._listener)),
+                this
+              );
+            }
+            off() {
+              return (
+                this.state != this.OFF &&
+                ((this.state = this.OFF), this._susX.off(r, this._listener))
+              );
+            }
+          }
+          (e.SusXChangeObserver = p), (p.ON = 1), (p.OFF = 0), (p.ONCE = 0.5);
+          class v extends l {
+            constructor() {
+              super(null);
+            }
+          }
+          (e.SusXObserver = v),
+            (e.SusXObject = class extends l {
+              constructor(t) {
+                void 0 !== t ? (a(t), super(t)) : super({});
+              }
+              putObject(t) {
+                if ("function" == typeof t) {
+                  const e = this.value;
+                  return (
+                    (this.value = Object.assign(Object.assign({}, e), t(e))),
+                    this
+                  );
+                }
+                return (
+                  a(t),
+                  (this.value = Object.assign(
+                    Object.assign({}, this.value),
+                    t,
+                  )),
+                  this
+                );
+              }
+              getObject() {
                 var t;
                 return null !== (t = this.value) && void 0 !== t ? t : {};
-              }),
-              (e.prototype.setObject = function (t) {
+              }
+              setObject(t) {
                 if ("function" == typeof t) {
-                  var e = this.value;
+                  const e = this.value;
                   return (this.value = t(e)), this;
                 }
-                return b(t), (this.value = t), this;
-              }),
-              e
-            );
-          })(_);
-          e.SusXObject = m;
+                return a(t), (this.value = t), this;
+              }
+            });
         },
       },
       e = {};
-    return (function n(r) {
-      var i = e[r];
+    return (function s(n) {
+      var i = e[n];
       if (void 0 !== i) return i.exports;
-      var o = (e[r] = { exports: {} });
-      return t[r].call(o.exports, o, o.exports, n), o.exports;
+      var r = (e[n] = { exports: {} });
+      return t[n].call(r.exports, r, r.exports, s), r.exports;
     })(607);
   })();
 });

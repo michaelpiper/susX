@@ -1,6 +1,6 @@
 {
   "name": "susx",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "The Last ObjectEventEmitter with a lot of features",
   "main": "lib/index.js",
   "scripts": {
