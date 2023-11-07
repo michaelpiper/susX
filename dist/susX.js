@@ -76,7 +76,8 @@
               });
             };
           Object.defineProperty(e, "__esModule", { value: !0 }),
-            (e.SusXObject =
+            (e.SusXArray =
+              e.SusXObject =
               e.SusXObserver =
               e.SusXChangeObserver =
               e.SusXSubscription =
@@ -112,33 +113,22 @@
           function c(t) {
             return { [i]: "once", fn: t };
           }
-          function f(t, e) {
+          function a(t, e) {
             e._events[t] = e._events[t] || [];
           }
-          function a(t) {
+          function f(t) {
             if (null == (e = t) || "object" != typeof e || Array.isArray(e))
               throw TypeError("obj must be a type of Object!");
             var e;
           }
-          class l {
-            constructor(t) {
+          function l(t) {
+            if (!Array.isArray(t))
+              throw TypeError("arr must be a type of Array!");
+          }
+          class v {
+            constructor() {
               (this._events = {}),
                 (this.delay = (t) => new Promise((e) => setTimeout(e, t)));
-              let e = t;
-              Object.defineProperty(this, "$value", {
-                get() {
-                  return e;
-                },
-                set(s) {
-                  (e = s), this.emit(r, t);
-                },
-              });
-            }
-            get value() {
-              return this.$value;
-            }
-            set value(t) {
-              this.$value = t;
             }
             addListener(t, e) {
               return this.on(t, e);
@@ -148,7 +138,7 @@
                 return (
                   o(t),
                   u(e),
-                  f(t, this),
+                  a(t, this),
                   yield new Promise((s, n) => {
                     this._events[t].push(
                       c((...t) => {
@@ -164,7 +154,7 @@
               });
             }
             subscribe(t) {
-              const e = new v(),
+              const e = new d(),
                 s = () =>
                   setTimeout(() => {
                     this.has(t, n) ? s() : e.emit("end");
@@ -174,18 +164,15 @@
                 };
               return this.on(t, n), s(), e;
             }
-            valueChange(t) {
-              return new p(this, t);
-            }
             on(t, e) {
-              return o(t), u(e), f(t, this), this._events[t].push(h(e)), this;
+              return o(t), u(e), a(t, this), this._events[t].push(h(e)), this;
             }
             prepend(t, e) {
               return this.prependListener(t, e);
             }
             prependListener(t, e) {
               return (
-                o(t), u(e), f(t, this), this._events[t].unshift(h(e)), this
+                o(t), u(e), a(t, this), this._events[t].unshift(h(e)), this
               );
             }
             prependOnce(t, e) {
@@ -193,14 +180,14 @@
             }
             prependOnceListener(t, e) {
               return (
-                o(t), u(e), f(t, this), this._events[t].unshift(c(e)), this
+                o(t), u(e), a(t, this), this._events[t].unshift(c(e)), this
               );
             }
             listeners(t) {
               return (this._events[t] || []).map((t) => t.fn);
             }
             once(t, e) {
-              return o(t), u(e), f(t, this), this._events[t].push(c(e)), this;
+              return o(t), u(e), a(t, this), this._events[t].push(c(e)), this;
             }
             removeAllListeners() {
               this._events = {};
@@ -209,7 +196,7 @@
               return this.removeListener(t, e);
             }
             has(t, e) {
-              o(t), f(t, this);
+              o(t), a(t, this);
               const s = this.listeners(t);
               return null == e || void 0 === e
                 ? 0 !== s.length
@@ -287,20 +274,57 @@
               );
             }
           }
-          (e.SusX = l),
-            (e.SusXSubscription = class extends l {
-              constructor() {
-                super(null);
+          e.SusX = v;
+          class p extends v {
+            constructor(t) {
+              super();
+              let e = t;
+              Object.defineProperty(this, "$value", {
+                get() {
+                  return e;
+                },
+                set(s) {
+                  (e = s), this.emit(r, t);
+                },
+              });
+            }
+            get value() {
+              return this.$value;
+            }
+            set value(t) {
+              this.$value = t;
+            }
+            valueChange(t, e = !0) {
+              const s = new y(this, t);
+              return e && s.on(), s;
+            }
+            put(t) {
+              const e = this.value;
+              return "function" == typeof t
+                ? ((this.value = e + t(e)), this)
+                : ((this.value = e + t), this);
+            }
+            get() {
+              var t;
+              return null !== (t = this.value) && void 0 !== t ? t : null;
+            }
+            set(t) {
+              if ("function" == typeof t) {
+                const e = this.value;
+                return (this.value = t(e)), this;
               }
-            });
-          class p {
+              return (this.value = t), this;
+            }
+          }
+          e.SusXSubscription = p;
+          class y {
             constructor(t, e) {
               (this._susX = t),
                 (this._listener = e),
-                (this.ON = p.ON),
-                (this.OFF = p.OFF),
-                (this.ONCE = p.ONCE),
-                (this.state = p.ONCE);
+                (this.ON = y.ON),
+                (this.OFF = y.OFF),
+                (this.ONCE = y.ONCE),
+                (this.state = y.ONCE);
             }
             get value() {
               return this._susX.value;
@@ -330,18 +354,18 @@
               );
             }
           }
-          (e.SusXChangeObserver = p), (p.ON = 1), (p.OFF = 0), (p.ONCE = 0.5);
-          class v extends l {
+          (e.SusXChangeObserver = y), (y.ON = 1), (y.OFF = 0), (y.ONCE = 0.5);
+          class d extends v {
             constructor() {
-              super(null);
+              super();
             }
           }
-          (e.SusXObserver = v),
-            (e.SusXObject = class extends l {
+          (e.SusXObserver = d),
+            (e.SusXObject = class extends p {
               constructor(t) {
-                void 0 !== t ? (a(t), super(t)) : super({});
+                void 0 !== t ? (f(t), super(t)) : super({});
               }
-              putObject(t) {
+              put(t) {
                 if ("function" == typeof t) {
                   const e = this.value;
                   return (
@@ -350,7 +374,7 @@
                   );
                 }
                 return (
-                  a(t),
+                  f(t),
                   (this.value = Object.assign(
                     Object.assign({}, this.value),
                     t,
@@ -358,16 +382,39 @@
                   this
                 );
               }
-              getObject() {
+              get() {
                 var t;
                 return null !== (t = this.value) && void 0 !== t ? t : {};
               }
-              setObject(t) {
+              set(t) {
                 if ("function" == typeof t) {
                   const e = this.value;
                   return (this.value = t(e)), this;
                 }
-                return a(t), (this.value = t), this;
+                return f(t), (this.value = t), this;
+              }
+            }),
+            (e.SusXArray = class extends p {
+              constructor(t) {
+                void 0 !== t ? (l(t), super(t)) : super([]);
+              }
+              put(t) {
+                if ("function" == typeof t) {
+                  const e = this.value;
+                  return (this.value = [...e, ...t(e)]), this;
+                }
+                return l(t), (this.value = [...this.value, ...t]), this;
+              }
+              get() {
+                var t;
+                return null !== (t = this.value) && void 0 !== t ? t : [];
+              }
+              set(t) {
+                if ("function" == typeof t) {
+                  const e = this.value;
+                  return (this.value = t(e)), this;
+                }
+                return l(t), (this.value = t), this;
               }
             });
         },

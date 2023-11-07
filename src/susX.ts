@@ -29,8 +29,8 @@ function assertType (type: any) {
 }
 
 type SymbolKey = string | number | symbol
-type Fn<ThisType extends SusX<any>, T = any, R=T> = (this: ThisType, ...args: any[]) => PromiseLike<R> | R
-type FnChange<ThisType extends SusX<any>, T = any, R=T> = (this: ThisType, value: T) => PromiseLike<R> | R
+type Fn<ThisType extends SusX, T = any, R=T> = (this: ThisType, ...args: any[]) => PromiseLike<R> | R
+type FnChange<ThisType extends SusX, T = any, R=T> = (this: ThisType, value: T) => PromiseLike<R> | R
 function assertFn (fn: Fn<any>) {
   if (typeof fn !== 'function') {
     throw new TypeError('fn is not type of Function!')
@@ -51,7 +51,7 @@ function onceListener (fn: Fn<any>) {
   }
 }
 
-function assertEvents <T> (type: any, thisType: SusX<T>) {
+function assertEvents (type: any, thisType: SusX) {
   thisType._events[type] = thisType._events[type] || []
 }
 function assertObj (obj: any) {
@@ -59,38 +59,21 @@ function assertObj (obj: any) {
     throw TypeError('obj must be a type of Object!')
   }
 }
+function assertArray (arr: any) {
+  if (!Array.isArray(arr)) {
+    throw TypeError('arr must be a type of Array!')
+  }
+}
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 
-export class SusX<T> {
-  constructor (value: T) {
-    let _value = value
-    Object.defineProperty(this, '$value', {
-      get(){
-       return _value
-      },
-      set(v) {
-        _value = v
-        this.emit(CHANGE_KEY_NAME, value)
-      },
-    })
-  }
-
-  get value (): T {
-    return this.$value
-  }
-
-  set value (value:T){
-    this.$value=value
-  }
-
-  protected $value!: T
+export class SusX {
   _events: Record<SymbolKey, Array<{ fn: Fn<any> }>> = {}
   delay = (ms: number) => new Promise((resolve)=> setTimeout(resolve, ms))
   addListener (type: SymbolKey, fn: Fn<this>) {
     return this.on(type, fn)
   }
 
-  async observe <R =T>(type: SymbolKey, fn: Fn<this, R>): Promise<R> {
+  async observe <R>(type: SymbolKey, fn: Fn<this, R>): Promise<R> {
     assertType(type)
     assertFn(fn)
     assertEvents(type, this)
@@ -124,12 +107,7 @@ export class SusX<T> {
     callback()
     return reader
   }
-  
-  valueChange<R>(fn: FnChange<this, T, any>){
-    const ctx = new SusXChangeObserver<this, R>(this, fn)
-    return ctx 
-  }
-
+ 
   on (type: SymbolKey, fn: Fn<this>) {
     assertType(type)
     assertFn(fn)
@@ -275,12 +253,64 @@ export class SusX<T> {
     return false
   }
 }
-export class SusXSubscription extends SusX<null> {
-  constructor () {
-    super(null)
+export class SusXSubscription<T> extends SusX {
+  constructor (value: T) {
+    super()
+    let _value = value
+    Object.defineProperty(this, '$value', {
+      get(){
+       return _value
+      },
+      set(v) {
+        _value = v
+        this.emit(CHANGE_KEY_NAME, value)
+      },
+    })
+  }
+
+  get value (): T {
+    return this.$value
+  }
+
+  set value (value:T){
+    this.$value=value
+  }
+
+  protected $value!: T
+   
+  valueChange<R>(fn: FnChange<this, T, any>, on:boolean = true){
+    const ctx = new SusXChangeObserver<this, R>(this, fn)
+    if(on){
+      ctx.on()
+    }
+    return ctx 
+  }
+  put (val: T | ((oldVal:T) => T)): this {
+    const value = this.value
+    if(typeof val === 'function'){
+      this.value =( value + (val as Function)(value)) as T
+      return this
+    }
+    
+    this.value = value + (val as any)
+    return this
+  }
+
+  get (): T {
+    return this.value ?? null as any as T
+  }
+
+  set (val: T | ((oldVal:T) => T)): this {
+    if(typeof val === 'function'){
+      const value = this.value
+      this.value = (val as Function)(value) as T
+      return this
+    }
+    this.value = val
+    return this
   }
 }
-export class SusXChangeObserver< ISusX extends SusX<any>, R = any> {
+export class SusXChangeObserver< ISusX extends SusXSubscription<any>, R = any> {
   constructor (protected _susX:ISusX, protected _listener:Fn<ISusX, ISusX['value'], R>) {
   }
   static ON: 1 = 1
@@ -318,12 +348,12 @@ export class SusXChangeObserver< ISusX extends SusX<any>, R = any> {
     return this._susX.off(CHANGE_KEY_NAME, this._listener)
   }
 }
-export class SusXObserver extends SusX<null> {
+export class SusXObserver extends SusX{
   constructor () {
-    super(null)
+    super()
   }
 }
-export class SusXObject<T extends Record<any, any>> extends SusX<T> {
+export class SusXObject<T extends Record<any, any>> extends SusXSubscription<T> {
   constructor (obj?: T) {
     if (obj !== undefined) {
       assertObj(obj)
@@ -333,7 +363,7 @@ export class SusXObject<T extends Record<any, any>> extends SusX<T> {
     }
   }
 
-  putObject (obj: Partial<T> | ((oldObj:T) => Partial<T>)): this {
+  put (obj: Partial<T> | ((oldObj:T) => Partial<T>)): this {
     if(typeof obj === 'function'){
       const value = this.value
       this.value = {...value, ...obj(value)}
@@ -344,11 +374,11 @@ export class SusXObject<T extends Record<any, any>> extends SusX<T> {
     return this
   }
 
-  getObject (): T {
+  get (): T {
     return this.value ?? {} as any as T
   }
 
-  setObject (obj: T| ((oldObj:T) => T)): this {
+  set (obj: T| ((oldObj:T) => T)): this {
     if(typeof obj === 'function'){
       const value = this.value
       this.value = obj(value)
@@ -356,6 +386,44 @@ export class SusXObject<T extends Record<any, any>> extends SusX<T> {
     }
     assertObj(obj)
     this.value = obj
+    return this
+  }
+}
+
+
+export class SusXArray<T extends Array<any>> extends SusXSubscription<T> {
+  constructor (arr?: T) {
+    if (arr !== undefined) {
+      assertArray(arr)
+      super(arr)
+    } else {
+      super([] as unknown as T)
+    }
+  }
+
+  put (arr: T | ((oldObj:T) => T)): this {
+    if(typeof arr === 'function'){
+      const value = this.value
+      this.value = [...value, ...arr(value)] as T
+      return this
+    }
+    assertArray(arr)
+    this.value = [...this.value, ...arr] as T
+    return this
+  }
+
+  get (): T {
+    return this.value ?? [] as any as T
+  }
+
+  set (arr: T| ((oldArr:T) => T)): this {
+    if(typeof arr === 'function'){
+      const value = this.value
+      this.value = arr(value)
+      return this
+    }
+    assertArray(arr)
+    this.value = arr
     return this
   }
 }

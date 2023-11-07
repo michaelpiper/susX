@@ -2,7 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert'
 import { SusXObject, SusXObserver, SusXSubscription, SusX, SusXChangeObserver } from './susX'
 test('SusX' , async (t)=>{
-  const susX = new SusX(1)
+  const susX = new SusXSubscription(1)
 
   /// available command are
   /// 1) ctx.on() // will turn on the observer
@@ -84,8 +84,8 @@ test('SusX' , async (t)=>{
 
 
   /// all are   SusXObject, SusXObserver, SusXSubscription instanceof SusX
-  await t.test('SusXSubscription', async (t) => {
-    const test1 = new SusXSubscription()
+  await t.test('SusX', async (t) => {
+    const test1 = new SusX()
     await test1.delay(200)
     const logText: SusXObserver = test1.subscribe('long-text')
     const text = ['hello this is a very', 'long way to subscribe to event but it cool' ]
@@ -108,13 +108,13 @@ test('SusX' , async (t)=>{
     const test1 = new SusXObject()
     setTimeout(async function () {
       console.log('waited for 2s to broadcast result hi')
-      test1.setObject({ hi: 'hi' }).putObject({ hi2: 'you' })
+      test1.set({ hi: 'hi' }).put({ hi2: 'you' })
       await test1.broadcast('hi', 'hi')
       test1.emit('hi2', test1.value.hi2)
       console.log('should be the last line result already returned')
     }, 2000)
     const result2 = await test1.observe('hi2', function (data: any) {
-      console.log('this', this.getObject())
+      console.log('this', this.get())
       return data
     })
     assert(result2 === 'you', 'result2 should be you'+ ' result2='+ result2)
